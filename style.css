@@ -1,0 +1,287 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --hue: 240;
+  --hue-2: 195; /* default 195 */
+
+  --white: hsl(0, 0%, 100%);
+  --green-light: hsl(196, 100%, 98%);
+  --green-light-2: hsl(var(--hue-2), 53%, 41%);
+  --green: hsl(var(--hue-2), 91%, 25%);
+  --gray-dark: hsl(var(--hue), 5%, 7%);
+  --dark: hsl(var(--hue), 6%, 13%);
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Mulish", sans-serif;
+  color: var(--gray-dark);
+  background-color: var(--green);
+}
+
+.app {
+  display: grid;
+
+  grid-template-areas:
+    "A A A"
+    "B B B"
+    "C C C"
+    "D D D";
+
+  height: 100vh;
+
+  margin: 0 auto;
+}
+
+.app header {
+  grid-area: A;
+}
+
+.app main section article {
+  grid-area: B;
+}
+
+.app main section aside {
+  grid-area: C;
+}
+
+.app footer {
+  grid-area: D;
+}
+
+.container {
+  width: min(43rem, 100%);
+  margin: 0 auto;
+  padding: 1.6rem 2.8rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.5rem;
+  background-color: var(--green);
+}
+
+.input-wrapper label {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+
+form {
+  flex: 1;
+}
+
+.input-wrapper input {
+  width: 100%;
+  background: var(--green-light-2);
+  height: 4rem;
+  border-radius: 0.4rem;
+  border: none;
+  padding-left: 1.2rem;
+}
+
+.input-wrapper input::placeholder {
+  color: var(--white);
+  opacity: 0.6;
+  font-size: 1.2rem;
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 0.1rem solid var(--green);
+  object-fit: cover;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner {
+  margin-inline: auto;
+}
+
+main .banner img {
+  max-width: 43rem;
+  object-fit: cover;
+  display: block;
+}
+
+.container .main-title {
+  display: flex;
+  flex-direction: column;
+  margin: 0.3rem 0 3rem 0;
+  gap: 0.8rem;
+}
+
+.container .main-title h1 {
+  font-size: 2.4rem;
+  color: var(--dark);
+  font-weight: 800;
+  line-height: 3.8rem;
+}
+
+.container .main-title img:nth-child(2) {
+  margin-left: 0.8rem;
+}
+
+.conteiner p {
+  font-weight: 400;
+  line-height: 2.5rem;
+  color: var(--dark);
+}
+
+aside h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+aside .item {
+  display: flex;
+  gap: 1.6rem;
+  margin-bottom: 3.2rem;
+  object-fit: cover;
+}
+
+.item img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+
+  transition: all 200ms ease-out;
+
+  display: block;
+}
+
+.item img:hover {
+  filter: hue-rotate(7deg) contrast(101%) saturate(200%);
+  transform: scale(1.1) rotate(-2deg);
+}
+
+.details h3 {
+  font-size: 1.6rem;
+}
+
+.details p {
+  font-size: 1.4rem;
+}
+
+footer {
+  text-align: center;
+  background-color: var(--green);
+  color: var(--white);
+  font-size: 1.4rem;
+  padding: 1.6rem;
+}
+
+header {
+  --startY: -100%;
+  animation: move 0.5s;
+}
+
+footer {
+  --startY: 100%;
+  animation: move 0.5s;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(var(--startY));
+  }
+}
+
+.item {
+  --delay: 0.4s;
+  animation: appear 0.4s var(--delay) backwards;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@media (min-width: 1120px) {
+  .app {
+    grid-template-areas:
+      "A A A"
+      "B B C"
+      "B B C"
+      "D D D";
+  }
+
+  header.container,
+  footer.container {
+    width: min(121.8rem, 100%);
+  }
+
+  main {
+    background-color: var(--green-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.4rem;
+  }
+
+  main section {
+    width: min(121.8rem, 100%);
+    display: flex;
+  }
+
+  .content {
+    width: min(80rem, 100%);
+  }
+
+  .banner {
+    margin-top: 4.4rem;
+  }
+
+  main .banner img {
+    max-width: 100%;
+  }
+
+  article.container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 1rem;
+  }
+
+  .container .main-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  aside h2 {
+    margin-top: 2rem;
+  }
+}
